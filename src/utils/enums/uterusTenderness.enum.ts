@@ -1,0 +1,4 @@
+export enum UTERUS_TENDERNESS {
+  PRESENT = 'PRESENT',
+  ABSENT = 'ABSENT',
+}

@@ -1,0 +1,7 @@
+export enum VisitStatus {
+  UPCOMING = 'UPCOMING',
+  COMPLETED = 'COMPLETED',
+  CANCELLED = 'CANCELLED',
+  MOTIFIED = 'MODIFIED',
+  NOTSHOW = 'NOTSHOW',
+}

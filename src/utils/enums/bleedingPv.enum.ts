@@ -1,0 +1,4 @@
+export enum BLEEDING_PV {
+  EXCESSIVE = 'EXCESSIVE',
+  NORMAL = 'NORMAL',
+}

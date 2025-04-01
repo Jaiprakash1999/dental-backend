@@ -1,0 +1,4 @@
+export enum EPISIOTOMY_TEAR {
+  HEALTHY = 'HEALTHY',
+  INFECTED = 'INFECTED',
+}

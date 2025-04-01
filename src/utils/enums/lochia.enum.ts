@@ -1,0 +1,4 @@
+export enum LOCHIA {
+  HEALTHY = 'HEALTHY',
+  FOULSMELLING = 'FOULSMELLING',
+}

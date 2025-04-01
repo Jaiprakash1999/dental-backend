@@ -1,0 +1,5 @@
+export enum VisitType {
+  FOLLOWUP = 'FOLLOWUP',
+  APPOINTMENT = 'APPOINTMENT',
+  INPERSON = 'INPERSON',
+}
