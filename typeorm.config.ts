@@ -2,7 +2,9 @@ import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 import * as dotenv from 'dotenv';
 import { BroadCast } from 'src/entities/dynamic/broadcast.entity';
 import { Chat } from 'src/entities/dynamic/chat.entity';
+import { DentalRecord } from 'src/entities/dynamic/dental_record.entity';
 import { Patient } from 'src/entities/dynamic/patient.entity';
+import { RecordStep } from 'src/entities/dynamic/record_step.entity';
 import { RecordANCAntenatalVisit } from 'src/entities/dynamic/records_anc_antenatal_visit.entity';
 import { RecordANCOptionalInvestigation } from 'src/entities/dynamic/records_anc_optional_investigations.entity';
 import { RecordAntenatalCare } from 'src/entities/dynamic/records_antenatal_care.entity';
@@ -18,6 +20,7 @@ import { RecordSFLabInvestigations } from 'src/entities/dynamic/records_sf_lab_i
 import { RecordVaccinationForm } from 'src/entities/dynamic/records_vaccination_form.entity';
 import { RecordVitalForm } from 'src/entities/dynamic/records_vital_form.entity';
 import { Sync } from 'src/entities/dynamic/sync.entity';
+import { TeethData } from 'src/entities/dynamic/teeth_data.entity';
 import { Template } from 'src/entities/dynamic/template.entity';
 import { TemplateRx } from 'src/entities/dynamic/template_rx.entity';
 import { User } from 'src/entities/dynamic/user.entity';
@@ -74,6 +77,9 @@ export const dynamicDbConfig: TypeOrmModuleOptions = {
     User,
     RecordANCOptionalInvestigation,
     Sync,
+    DentalRecord,
+    TeethData,
+    RecordStep,
   ], // dynamic DB entities
   synchronize: true, // False in production
 };
@@ -139,6 +145,9 @@ export const dynamicDatasourceConfig: DataSourceOptions = {
     Visit,
     RecordANCOptionalInvestigation,
     Sync,
+    DentalRecord,
+    TeethData,
+    RecordStep,
   ], // dynamic DB entities
   synchronize: true,
 };

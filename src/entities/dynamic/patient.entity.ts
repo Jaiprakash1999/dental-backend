@@ -65,7 +65,7 @@ export class Patient {
   @Column({ name: 'photo', type: 'text', nullable: true })
   photo: string;
 
-  @Column({ name: 'habitat', nullable: false })
+  @Column({ name: 'habitat', nullable: true })
   habitat: number;
 
   @Column({ nullable: true })

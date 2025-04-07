@@ -7,4 +7,5 @@ export enum FormName {
   COB = 'care-of-baby',
   PR = 'prescription',
   SF = 'screening-form',
+  DF = 'dental-form',
 }

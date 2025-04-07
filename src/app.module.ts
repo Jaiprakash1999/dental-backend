@@ -60,6 +60,9 @@ import { DataBackup } from './entities/static/data_backup.entity';
 import { RecordANCOptionalInvestigation } from './entities/dynamic/records_anc_optional_investigations.entity';
 import { Sync } from './entities/dynamic/sync.entity';
 import { AppController } from './utils/app.controller';
+import { DentalRecord } from './entities/dynamic/dental_record.entity';
+import { TeethData } from './entities/dynamic/teeth_data.entity';
+import { RecordStep } from './entities/dynamic/record_step.entity';
 
 @Global()
 @Module({
@@ -89,6 +92,9 @@ import { AppController } from './utils/app.controller';
         Visit,
         Sync,
         RecordANCOptionalInvestigation,
+        DentalRecord,
+        TeethData,
+        RecordStep,
       ],
       'dynamicDB',
     ),

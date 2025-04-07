@@ -42,6 +42,11 @@ import { Template } from 'src/entities/dynamic/template.entity';
 import { TemplateRx } from 'src/entities/dynamic/template_rx.entity';
 import { MandalService } from 'src/mandal/mandal.service';
 import { RecordANCOptionalInvestigation } from 'src/entities/dynamic/records_anc_optional_investigations.entity';
+import { DentalRecord } from 'src/entities/dynamic/dental_record.entity';
+import { TeethData } from 'src/entities/dynamic/teeth_data.entity';
+import { RecordStep } from 'src/entities/dynamic/record_step.entity';
+import { DentalFormService } from './dental_form/dental_form.service';
+import { DentalFormController } from './dental_form/dental_form.controller';
 
 @Module({
   imports: [
@@ -61,6 +66,9 @@ import { RecordANCOptionalInvestigation } from 'src/entities/dynamic/records_anc
         RecordPostNatalCare,
         RecordPregnancyOverview,
         RecordANCOptionalInvestigation,
+        DentalRecord,
+        TeethData,
+        RecordStep,
         Template,
         TemplateRx,
         User,
@@ -81,6 +89,7 @@ import { RecordANCOptionalInvestigation } from 'src/entities/dynamic/records_anc
     PostNatalCareController,
     CareOfBabyController,
     AntenatalCareController,
+    DentalFormController,
   ],
   providers: [
     RecordsService,
@@ -95,6 +104,7 @@ import { RecordANCOptionalInvestigation } from 'src/entities/dynamic/records_anc
     AntenatalCareService,
     VisitService,
     MandalService,
+    DentalFormService,
   ],
 })
 export class RecordsModule {}

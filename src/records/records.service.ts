@@ -10,6 +10,7 @@ import { AntenatalCareService } from './antenatal_care/antenatal_care.service';
 import { PostNatalCareService } from './post_natal_care/post_natal_care.service';
 import { CareOfBabyService } from './care_of_baby/care_of_baby.service';
 import { FormName } from 'src/utils/enums/formName.enum';
+import { DentalFormService } from './dental_form/dental_form.service';
 
 @Injectable()
 export class RecordsService {
@@ -24,6 +25,7 @@ export class RecordsService {
     private readonly antenatalCareService: AntenatalCareService,
     private readonly postNatalCareService: PostNatalCareService,
     private readonly careOfBabyService: CareOfBabyService,
+    private readonly dentalFormService: DentalFormService,
   ) {}
 
   async getPatientRecords(
@@ -44,6 +46,8 @@ export class RecordsService {
     careOfBabyPageSize: number,
     postNatalCarePageNumber: number,
     postNatalCarePageSize: number,
+    dentalPageNumber: number,
+    dentalPageSize: number,
   ) {
     await this.patientService.verifyPatient(patientId);
     const userInfo = await this.authService.getUserInfo();
@@ -100,6 +104,13 @@ export class RecordsService {
       postNatalCarePageSize,
       userInfo,
     );
+    const dentalForms = await this.dentalFormService.getDentalFormMetaDetails(
+      patientId,
+      dentalPageNumber,
+      dentalPageSize,
+      userInfo,
+    );
+
     return {
       records: {
         vaccinationForms: {
@@ -134,6 +145,10 @@ export class RecordsService {
           total: postNatalCares.total,
           forms: postNatalCares.data,
         },
+        dentalForms: {
+          total: dentalForms.total,
+          forms: dentalForms.data,
+        },
       },
     };
   }
@@ -165,6 +180,8 @@ export class RecordsService {
 
       case FormName.SF:
         return await this.screeningFormService.getScreeningFormById(formId);
+      case FormName.DF:
+        return await this.dentalFormService.getDentalFormById(formId);
 
       default:
         throw new BadRequestException('Invalid form name');
