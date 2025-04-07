@@ -106,7 +106,7 @@ export class PatientCreate {
     description: 'Habitat of the patient',
     example: 1,
   })
-  @IsNotEmpty()
+  @IsOptional()
   habitat: number;
 
   @ApiProperty({

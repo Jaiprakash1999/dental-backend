@@ -837,5 +837,6 @@ export const mappings = [
 
 export function getHabitat(id: number): string {
   const response = mappings.find((mapping) => mapping.id == id);
-  return `${response.habitation} (${response.gramPanchayat}, ${response.mandal})`;
+  // return `${response.habitation} (${response.gramPanchayat}, ${response.mandal})`;
+  return null;
 }
