@@ -63,6 +63,8 @@ import { AppController } from './utils/app.controller';
 import { DentalRecord } from './entities/dynamic/dental_record.entity';
 import { TeethData } from './entities/dynamic/teeth_data.entity';
 import { RecordStep } from './entities/dynamic/record_step.entity';
+import { Doctor } from './entities/dynamic/doctor.entity';
+import { DoctorModule } from './doctor/doctor.module';
 
 @Global()
 @Module({
@@ -95,6 +97,7 @@ import { RecordStep } from './entities/dynamic/record_step.entity';
         DentalRecord,
         TeethData,
         RecordStep,
+        Doctor,
       ],
       'dynamicDB',
     ),
@@ -131,6 +134,7 @@ import { RecordStep } from './entities/dynamic/record_step.entity';
     AuthModule,
     PatientModule,
     VisitModule,
+    DoctorModule,
   ],
   providers: [
     {

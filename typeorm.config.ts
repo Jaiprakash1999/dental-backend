@@ -3,6 +3,7 @@ import * as dotenv from 'dotenv';
 import { BroadCast } from 'src/entities/dynamic/broadcast.entity';
 import { Chat } from 'src/entities/dynamic/chat.entity';
 import { DentalRecord } from 'src/entities/dynamic/dental_record.entity';
+import { Doctor } from 'src/entities/dynamic/doctor.entity';
 import { Patient } from 'src/entities/dynamic/patient.entity';
 import { RecordStep } from 'src/entities/dynamic/record_step.entity';
 import { RecordANCAntenatalVisit } from 'src/entities/dynamic/records_anc_antenatal_visit.entity';
@@ -80,6 +81,7 @@ export const dynamicDbConfig: TypeOrmModuleOptions = {
     DentalRecord,
     TeethData,
     RecordStep,
+    Doctor,
   ], // dynamic DB entities
   synchronize: true, // False in production
 };
@@ -148,6 +150,7 @@ export const dynamicDatasourceConfig: DataSourceOptions = {
     DentalRecord,
     TeethData,
     RecordStep,
+    Doctor,
   ], // dynamic DB entities
   synchronize: true,
 };
