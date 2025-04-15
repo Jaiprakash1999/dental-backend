@@ -65,6 +65,7 @@ import { TeethData } from './entities/dynamic/teeth_data.entity';
 import { RecordStep } from './entities/dynamic/record_step.entity';
 import { Doctor } from './entities/dynamic/doctor.entity';
 import { DoctorModule } from './doctor/doctor.module';
+import { DoctorTimeSlot } from './entities/dynamic/doctor_time_slot.entity';
 
 @Global()
 @Module({
@@ -98,6 +99,7 @@ import { DoctorModule } from './doctor/doctor.module';
         TeethData,
         RecordStep,
         Doctor,
+        DoctorTimeSlot,
       ],
       'dynamicDB',
     ),

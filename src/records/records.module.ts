@@ -47,6 +47,8 @@ import { TeethData } from 'src/entities/dynamic/teeth_data.entity';
 import { RecordStep } from 'src/entities/dynamic/record_step.entity';
 import { DentalFormService } from './dental_form/dental_form.service';
 import { DentalFormController } from './dental_form/dental_form.controller';
+import { Doctor } from 'src/entities/dynamic/doctor.entity';
+import { DoctorTimeSlot } from 'src/entities/dynamic/doctor_time_slot.entity';
 
 @Module({
   imports: [
@@ -74,6 +76,8 @@ import { DentalFormController } from './dental_form/dental_form.controller';
         User,
         Patient,
         Visit,
+        Doctor,
+        DoctorTimeSlot,
       ],
       'dynamicDB',
     ),

@@ -7,9 +7,15 @@ import { User } from 'src/entities/dynamic/user.entity';
 import { Patient } from 'src/entities/dynamic/patient.entity';
 import { Visit } from 'src/entities/dynamic/visit.entity';
 import { MandalService } from 'src/mandal/mandal.service';
+import { DoctorTimeSlot } from 'src/entities/dynamic/doctor_time_slot.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([User, Patient, Visit], 'dynamicDB')],
+  imports: [
+    TypeOrmModule.forFeature(
+      [User, Patient, Visit, DoctorTimeSlot],
+      'dynamicDB',
+    ),
+  ],
   controllers: [VisitController],
   providers: [VisitService, PatientService, MandalService],
   exports: [VisitService],

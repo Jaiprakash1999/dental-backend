@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { In, IsNull, Not, Repository } from 'typeorm';
+import { Between, IsNull, Not, Repository } from 'typeorm';
 import { VisitStatus } from 'src/utils/enums/visit_status.enum';
 import { MMUUnit } from 'src/utils/enums/mmu_unit.enum';
 import { VisitTags } from 'src/utils/enums/visit_tags.enum';
@@ -12,12 +12,15 @@ import { PatientService } from 'src/patient/patient.service';
 import { Visit } from 'src/entities/dynamic/visit.entity';
 import { VisitCreate } from './dtos/request/visit_create.request';
 import { AuthService } from 'src/auth/auth.service';
+import { DoctorTimeSlot } from 'src/entities/dynamic/doctor_time_slot.entity';
 
 @Injectable()
 export class VisitService {
   constructor(
     @InjectRepository(Visit, 'dynamicDB')
     private readonly visitRepository: Repository<Visit>,
+    @InjectRepository(DoctorTimeSlot, 'dynamicDB')
+    private readonly timeSlotRepo: Repository<DoctorTimeSlot>,
     private readonly authService: AuthService,
     private readonly patientService: PatientService,
   ) {}
@@ -30,6 +33,38 @@ export class VisitService {
     //Get the patient of which we need to create the visit
     const patient = await this.patientService.verifyPatient(body.patientId);
     const userInfo = await this.authService.getUserInfo();
+
+    const inputDate = new Date(body.visitDate); // likely a string like "2025-04-15"
+
+    const startOfDay = new Date(
+      Date.UTC(
+        inputDate.getFullYear(),
+        inputDate.getMonth(),
+        inputDate.getDate(),
+      ),
+    );
+    const endOfDay = new Date(
+      Date.UTC(
+        inputDate.getFullYear(),
+        inputDate.getMonth(),
+        inputDate.getDate() + 1,
+      ),
+    );
+
+    const timeSlots = await this.timeSlotRepo.find({
+      where: body.visitTime.map((time) => ({
+        doctor: { doctorId: body.doctorId },
+        date: Between(startOfDay, endOfDay),
+        time: new Date(time),
+        isAvailable: true,
+      })),
+    });
+
+    if (timeSlots.length !== body.visitTime.length)
+      throw new NotFoundException(
+        'One or more selected time slots are not available',
+      );
+
     // Determine the new token number
     const highestToken = await this.visitRepository
       .createQueryBuilder('visit')
@@ -43,6 +78,12 @@ export class VisitService {
     // Create the new Visit
     const newVisit = mapToVisit(id, headId, newTokenNumber, body);
     const savedVisit = await this.visitRepository.save(newVisit);
+
+    for (const slot of timeSlots) {
+      slot.isAvailable = false;
+    }
+    await this.timeSlotRepo.save(timeSlots);
+
     return visitResponseMapper(savedVisit, patient, userInfo);
   }
 

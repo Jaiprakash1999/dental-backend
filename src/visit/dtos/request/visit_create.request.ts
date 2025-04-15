@@ -29,8 +29,10 @@ export class VisitCreate {
     description: 'The ID of the doctor handling the visit',
     example: 'c89b0f4e-5f64-4c2a-8345-a6b77cbd1d9f',
   })
-  @IsOptional()
-  @IsUUID()
+  // @IsOptional()
+  // @IsUUID()
+  @IsNotEmpty()
+  @IsString()
   doctorId?: string;
 
   @ApiPropertyOptional({
@@ -60,6 +62,10 @@ export class VisitCreate {
   @IsNotEmpty()
   @IsDateString()
   visitDate: Date;
+
+  @IsArray()
+  @IsString({ each: true })
+  visitTime: string[];
 
   @ApiPropertyOptional({
     description: 'Tags associated with the visit',

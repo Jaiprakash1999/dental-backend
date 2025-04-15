@@ -63,6 +63,9 @@ export class VisitResponse {
   })
   visitDate: string;
 
+  @ApiProperty()
+  visitTime: string[];
+
   @ApiProperty({
     description: 'Tags associated with the visit',
     enum: VisitTags,

@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { DoctorTimeSlot } from './doctor_time_slot.entity';
 
 @Entity()
 export class Doctor {
@@ -10,4 +11,7 @@ export class Doctor {
 
   @Column()
   doctorName: string;
+
+  @OneToMany(() => DoctorTimeSlot, (slot) => slot.doctor)
+  timeSlots: DoctorTimeSlot[];
 }

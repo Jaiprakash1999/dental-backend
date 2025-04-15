@@ -30,6 +30,9 @@ export class Visit {
   @Column({ type: 'date', name: 'visit_date' })
   visitDate: Date;
 
+  @Column('text', { array: true, nullable: true })
+  visitTime: string[];
+
   @Column({
     type: 'enum',
     enum: VisitTags,

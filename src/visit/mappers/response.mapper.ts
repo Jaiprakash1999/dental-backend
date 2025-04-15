@@ -32,7 +32,9 @@ export function visitResponseMapper(
   response.pincode = visit.pincode;
   response.tehsil = visit.tehsil;
   response.district = visit.district;
+  response.visitTime = visit.visitTime;
   response.bloodGroup = patient.bloodGroup;
+
   response.createdBy = users.find((user) => user['id'] == visit.createdBy)[
     'name'
   ];
