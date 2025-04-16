@@ -55,10 +55,10 @@ export class Visit {
   })
   visitStatus: VisitStatus;
 
-  @Column({ type: 'double precision', nullable: false })
+  @Column({ type: 'double precision', nullable: true })
   latitude: number;
 
-  @Column({ type: 'double precision', nullable: false })
+  @Column({ type: 'double precision', nullable: true })
   longitude: number;
 
   @Column({ nullable: false, name: 'mmu_head' })

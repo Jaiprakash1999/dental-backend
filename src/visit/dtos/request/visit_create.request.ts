@@ -91,21 +91,21 @@ export class VisitCreate {
     description: 'Latitude of the patient’s location',
     example: 40.712776,
   })
-  @IsNotEmpty()
+  @IsOptional()
   @IsNumber({ allowNaN: false })
   @Min(-90)
   @Max(90)
-  latitude: number;
+  latitude?: number;
 
   @ApiProperty({
     description: 'Longitude of the patient’s location',
     example: -74.005974,
   })
-  @IsNotEmpty()
+  @IsOptional()
   @IsNumber({ allowNaN: false })
   @Min(-180)
   @Max(180)
-  longitude: number;
+  longitude?: number;
 
   @ApiProperty({
     description: 'District where the visit takes place',
