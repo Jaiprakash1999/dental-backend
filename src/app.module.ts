@@ -66,6 +66,7 @@ import { RecordStep } from './entities/dynamic/record_step.entity';
 import { Doctor } from './entities/dynamic/doctor.entity';
 import { DoctorModule } from './doctor/doctor.module';
 import { DoctorTimeSlot } from './entities/dynamic/doctor_time_slot.entity';
+import { UploadRecord } from './entities/dynamic/upload_record.entity';
 
 @Global()
 @Module({
@@ -100,6 +101,7 @@ import { DoctorTimeSlot } from './entities/dynamic/doctor_time_slot.entity';
         RecordStep,
         Doctor,
         DoctorTimeSlot,
+        UploadRecord,
       ],
       'dynamicDB',
     ),

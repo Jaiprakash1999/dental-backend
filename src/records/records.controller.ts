@@ -29,6 +29,8 @@ export class RecordsController {
     @Query('postNatalCarePageSize') postNatalCarePageSize: number,
     @Query('dentalPage') dentalPageNumber: number,
     @Query('dentalPageSize') dentalPageSize: number,
+    @Query('uploadRecordPageNumber') uploadRecordPageNumber: number,
+    @Query('uploadRecordPageSize') uploadRecordPageSize: number,
   ) {
     return await this.recordsService.getPatientRecords(
       patientId,
@@ -50,6 +52,8 @@ export class RecordsController {
       postNatalCarePageSize,
       dentalPageNumber,
       dentalPageSize,
+      uploadRecordPageNumber,
+      uploadRecordPageSize,
     );
   }
 

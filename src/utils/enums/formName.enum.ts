@@ -8,4 +8,5 @@ export enum FormName {
   PR = 'prescription',
   SF = 'screening-form',
   DF = 'dental-form',
+  UD = 'upload-record',
 }

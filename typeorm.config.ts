@@ -25,6 +25,7 @@ import { Sync } from 'src/entities/dynamic/sync.entity';
 import { TeethData } from 'src/entities/dynamic/teeth_data.entity';
 import { Template } from 'src/entities/dynamic/template.entity';
 import { TemplateRx } from 'src/entities/dynamic/template_rx.entity';
+import { UploadRecord } from 'src/entities/dynamic/upload_record.entity';
 import { User } from 'src/entities/dynamic/user.entity';
 import { Visit } from 'src/entities/dynamic/visit.entity';
 import { AdrTable } from 'src/entities/static/adr_table.entity';
@@ -84,6 +85,7 @@ export const dynamicDbConfig: TypeOrmModuleOptions = {
     RecordStep,
     Doctor,
     DoctorTimeSlot,
+    UploadRecord,
   ], // dynamic DB entities
   synchronize: true, // False in production
 };
@@ -154,6 +156,7 @@ export const dynamicDatasourceConfig: DataSourceOptions = {
     RecordStep,
     Doctor,
     DoctorTimeSlot,
+    UploadRecord,
   ], // dynamic DB entities
   synchronize: true,
 };

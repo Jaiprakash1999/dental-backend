@@ -49,6 +49,9 @@ import { DentalFormService } from './dental_form/dental_form.service';
 import { DentalFormController } from './dental_form/dental_form.controller';
 import { Doctor } from 'src/entities/dynamic/doctor.entity';
 import { DoctorTimeSlot } from 'src/entities/dynamic/doctor_time_slot.entity';
+import { UploadRecord } from 'src/entities/dynamic/upload_record.entity';
+import { UploadDocumentController } from './upload_document/upload_document.controller';
+import { UploadDocumentService } from './upload_document/upload_document.service';
 
 @Module({
   imports: [
@@ -78,6 +81,7 @@ import { DoctorTimeSlot } from 'src/entities/dynamic/doctor_time_slot.entity';
         Visit,
         Doctor,
         DoctorTimeSlot,
+        UploadRecord,
       ],
       'dynamicDB',
     ),
@@ -94,6 +98,7 @@ import { DoctorTimeSlot } from 'src/entities/dynamic/doctor_time_slot.entity';
     CareOfBabyController,
     AntenatalCareController,
     DentalFormController,
+    UploadDocumentController,
   ],
   providers: [
     RecordsService,
@@ -109,6 +114,7 @@ import { DoctorTimeSlot } from 'src/entities/dynamic/doctor_time_slot.entity';
     VisitService,
     MandalService,
     DentalFormService,
+    UploadDocumentService,
   ],
 })
 export class RecordsModule {}

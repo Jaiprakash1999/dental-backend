@@ -11,6 +11,7 @@ import { PostNatalCareService } from './post_natal_care/post_natal_care.service'
 import { CareOfBabyService } from './care_of_baby/care_of_baby.service';
 import { FormName } from 'src/utils/enums/formName.enum';
 import { DentalFormService } from './dental_form/dental_form.service';
+import { UploadDocumentService } from './upload_document/upload_document.service';
 
 @Injectable()
 export class RecordsService {
@@ -26,6 +27,7 @@ export class RecordsService {
     private readonly postNatalCareService: PostNatalCareService,
     private readonly careOfBabyService: CareOfBabyService,
     private readonly dentalFormService: DentalFormService,
+    private readonly uploadDocumentService: UploadDocumentService,
   ) {}
 
   async getPatientRecords(
@@ -48,6 +50,8 @@ export class RecordsService {
     postNatalCarePageSize: number,
     dentalPageNumber: number,
     dentalPageSize: number,
+    uploadRecordPageNumber: number,
+    uploadRecordPageSize: number,
   ) {
     await this.patientService.verifyPatient(patientId);
     const userInfo = await this.authService.getUserInfo();
@@ -111,6 +115,14 @@ export class RecordsService {
       userInfo,
     );
 
+    const uploadDocument =
+      await this.uploadDocumentService.getUploadRecordMetaDetails(
+        patientId,
+        uploadRecordPageNumber,
+        uploadRecordPageSize,
+        userInfo,
+      );
+
     return {
       records: {
         vaccinationForms: {
@@ -149,6 +161,10 @@ export class RecordsService {
           total: dentalForms.total,
           forms: dentalForms.data,
         },
+        uploadDocument: {
+          total: uploadDocument.total,
+          forms: uploadDocument.data,
+        },
       },
     };
   }
@@ -182,7 +198,8 @@ export class RecordsService {
         return await this.screeningFormService.getScreeningFormById(formId);
       case FormName.DF:
         return await this.dentalFormService.getDentalFormById(formId);
-
+      case FormName.UD:
+        return await this.uploadDocumentService.getDocumentById(formId);
       default:
         throw new BadRequestException('Invalid form name');
     }
