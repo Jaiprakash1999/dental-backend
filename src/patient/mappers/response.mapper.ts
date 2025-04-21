@@ -30,7 +30,7 @@ export function mapToPatientResponse(
   response.createdBy = users.find((user) => user['id'] == patient.createdBy)[
     'name'
   ];
-  response.habitat = getHabitat(patient.habitat);
+  response.habitat = getHabitat(patient?.habitat);
   response.patientTag = patient.patientTag;
   return response;
 }

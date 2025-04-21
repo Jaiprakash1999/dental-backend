@@ -30,6 +30,9 @@ export class Visit {
   @Column({ type: 'date', name: 'visit_date' })
   visitDate: Date;
 
+  @Column('text', { array: true, nullable: true })
+  visitTime: string[];
+
   @Column({
     type: 'enum',
     enum: VisitTags,
@@ -52,10 +55,10 @@ export class Visit {
   })
   visitStatus: VisitStatus;
 
-  @Column({ type: 'double precision', nullable: false })
+  @Column({ type: 'double precision', nullable: true })
   latitude: number;
 
-  @Column({ type: 'double precision', nullable: false })
+  @Column({ type: 'double precision', nullable: true })
   longitude: number;
 
   @Column({ nullable: false, name: 'mmu_head' })

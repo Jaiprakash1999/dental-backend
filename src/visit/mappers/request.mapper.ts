@@ -26,5 +26,6 @@ export function mapToVisit(
   response.tehsil = body.tehsil;
   response.createdBy = userId;
   response.line = body.line;
+  response.visitTime = body.visitTime;
   return response;
 }

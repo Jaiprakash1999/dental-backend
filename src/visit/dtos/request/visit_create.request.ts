@@ -29,8 +29,10 @@ export class VisitCreate {
     description: 'The ID of the doctor handling the visit',
     example: 'c89b0f4e-5f64-4c2a-8345-a6b77cbd1d9f',
   })
-  @IsOptional()
-  @IsUUID()
+  // @IsOptional()
+  // @IsUUID()
+  @IsNotEmpty()
+  @IsString()
   doctorId?: string;
 
   @ApiPropertyOptional({
@@ -61,6 +63,10 @@ export class VisitCreate {
   @IsDateString()
   visitDate: Date;
 
+  @IsArray()
+  @IsString({ each: true })
+  visitTime: string[];
+
   @ApiPropertyOptional({
     description: 'Tags associated with the visit',
     example: [VisitTags.EMERGENCY, VisitTags.BABYDELIVERY],
@@ -85,21 +91,21 @@ export class VisitCreate {
     description: 'Latitude of the patient’s location',
     example: 40.712776,
   })
-  @IsNotEmpty()
+  @IsOptional()
   @IsNumber({ allowNaN: false })
   @Min(-90)
   @Max(90)
-  latitude: number;
+  latitude?: number;
 
   @ApiProperty({
     description: 'Longitude of the patient’s location',
     example: -74.005974,
   })
-  @IsNotEmpty()
+  @IsOptional()
   @IsNumber({ allowNaN: false })
   @Min(-180)
   @Max(180)
-  longitude: number;
+  longitude?: number;
 
   @ApiProperty({
     description: 'District where the visit takes place',
